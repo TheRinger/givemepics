@@ -12,6 +12,9 @@ echo Number of words to submitted: $#
 if [ $# -eq 0 ]
 	then
 	echo "No Arguments were passed"
+	echo "Pass search terms to script. -  ./gmp.sh [search terms]"
+	echo "Example:"
+	echo "./gmp.sh hot chicks drinking beer"
 	exit 1
 fi
 choice=3
