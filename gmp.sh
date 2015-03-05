@@ -8,7 +8,7 @@ do
 done
 ARGV=$keywords
 echo
-echo Number of words to submitted: $#
+echo Number of words submitted: $#
 
 if [ $# -eq 0 ]
     then
@@ -21,8 +21,8 @@ if [ $# -eq 0 ]
     exit 1
 fi
 clear
-toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1700
-echo -e '    \E[37;44m'"\033[1m A simple script that downloads Google Images.. \033[0m " | pv -qL 50
+toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1900
+echo -e '    \E[37;44m'"\033[1m A simple script that downloads Google Images.. \033[0m " | pv -qL 65
 #echo "    A simple script that downloads Google Images.. " | pv -qL 50
 echo
 PS3='Please enter your choice:  '
@@ -81,18 +81,23 @@ do
             ;;
         "Install Requirements")
             echo ""
-            sudo apt-get install toilet pv -y && curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
+            sudo apt-get update
+            sudo apt-get install toilet pv curl wget perl make git -y
+            sudo apt-get install libio-socket-ssl-perl -y
+            sudo cpan install Mojolicious
+            sudo curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
+
             echo ""
             echo " Requirements Installed. "
             ;;
         "Quit")
-			echo
-			echo "Github Repo found at https://github.com/tytek2012/givemepics"
+                        echo
+                        echo "Github Repo found at https://github.com/tytek2012/givemepics"
             break
             ;;
         *) echo invalid option
-			clear
-			toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1600
+                        clear
+                        toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1600
            echo "Options are" 
            echo "1) Simple Search"
            echo "2) Advanced Search" 
