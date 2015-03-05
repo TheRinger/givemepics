@@ -1,24 +1,27 @@
-Based off the original code by Yunga Palatino
-https://gist.github.com/yunga/4b98e5c2e53dbcbd4c6c
-
-
+#Give.Me.Pics
 
 ---------------------
 REQUIREMENTS
 
--- Mojolicious
+-- Mojolicious - http://mojolicio.us/
 
-$ cpan Mojolicious
+    $ cpan Mojolicious
+or
+
+    $ curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
 
 -----------------------
 
 # givemepics
 
 make it executable
-chmod +x gmp.sh
 
-throw in local ~/bin dir
-cp gmp.sh ~/bin/gmp
+    chmod +x gmp.sh
+
+change the name and put into your local path
+
+    cp gmp.sh ~/bin/gmp
+
 
 Searches and downloads pics straight from google.
 Pass Search terms to script as arguments..
