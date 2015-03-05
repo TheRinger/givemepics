@@ -1,4 +1,12 @@
 #Give.Me.Pics
+Here is what Option 3 - Install Requirements does
+
+            sudo apt-get update
+            sudo apt-get install toilet pv curl wget perl make git -y
+            sudo apt-get install libio-socket-ssl-perl -y
+            sudo cpan install Mojolicious
+            sudo curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
+
 
 ---------------------
 REQUIREMENTS
