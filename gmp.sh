@@ -15,8 +15,8 @@ if [ $# -eq 0 ]
     echo
     echo " No Arguments were passed"
     echo " Pass search terms to script. -  ./gmp [search terms]"
-    echo " Example:" | pv -qL 20
-    echo " ./gmp.sh hot chicks drinking beer" | pv -qL 25
+    echo " Example:"
+    echo " ./gmp.sh hot chicks drinking beer"
     echo
     exit 1
 fi
