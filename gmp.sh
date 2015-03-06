@@ -1,30 +1,28 @@
 #!/bin/bash
 
-keywords=""
-
-for var in "$@"
-do
-    keywords+="$var%20"
-done
-ARGV=$keywords
-echo
-echo Number of words submitted: $#
-
-if [ $# -eq 0 ]
-    then
-    echo
-    echo " No Arguments were passed"
-    echo " Pass search terms to script. -  ./gmp [search terms]"
-    echo " Example:"
-    echo " ./gmp.sh hot chicks drinking beer"
-    echo
-    exit 1
-fi
-clear
-toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1900
-echo -e '    \E[37;44m'"\033[1m A simple script that downloads Google Images.. \033[0m " | pv -qL 65
+            keywords=""
+            for var in "$@"
+            do
+                keywords+="$var%20"
+            done
+            ARGV=$keywords
+            echo
+            echo Number of words to submitted: $#
+            if [ $# -eq 0 ]
+                then
+                echo
+                echo " No Arguments were passed"
+                echo " Pass search terms to script. -  ./gmp [search terms]"
+                echo " Example:"
+                echo " ./gmp.sh hot chicks drinking beer"
+                echo
+                exit 1
+            fi
+            clear
+            toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1900
+            echo -e '    \E[37;44m'"\033[1m A simple script that downloads Google Images.. \033[0m " | pv -qL 60
 #echo "    A simple script that downloads Google Images.. " | pv -qL 50
-echo
+            echo
 PS3='Please enter your choice:  '
 options=("Simple Search" "Advanced Search" "Install Requirements" "Quit")
 select opt in "${options[@]}"
@@ -65,19 +63,24 @@ do
             echo 
             echo -e ' Choose a Color - \E[37;44m'"\033[1m Enter \033[0m  for all. \c"
             read colortype
+            echo 
+            echo -e ' Choose a Size - \E[37;44m'"\033[1m Enter \033[0m  for all. \c"
+            echo '  Heigth: px = : '
+            read size_h
+            echo '  Width: px = : '
+            read size_w
             echo
             echo -e " How many Pics you want? ( 1 - 99 ) \c"
             read piccount
             echo
             echo " Scraping "$piccount" images to ${PWD} " | pv -qL 15
             echo
-        
             if [ ${#colortype} -eq 0 ]
                 then
                 colortype=""
             fi 
-                       
-                  perl -Mojo -E'g("https://www.google.com/search?tbm=isch&q='$ARGV'filetype:'$filetype'&tbs=isz:ex,iszw:1920,iszh:1080,ic:specific,isc:'$colortype'", { "User-Agent" => "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 Chrome/24.0.1312.57" })->dom(".rg_l")->map(sub { m!href="http://www.google.com/imgres\?imgurl=(.*?)&amp;! and $1 } )->join("\n")->say' | head -"$piccount" | xargs -n 1 -P 8 wget -q
+                   perl -Mojo -E'g("https://www.google.com/search?tbm=isch&q='$ARGV'filetype:'$filetype'&tbs=isz:ex,iszw:'$size_w',iszh:'$size_h',ic:specific,isc:'$colortype'", { "User-Agent" => "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 Chrome/24.0.1312.57" })->dom(".rg_l")->map(sub { m!href="http://www.google.com/imgres\?imgurl=(.*?)&amp;! and $1 } )->join("\n")->say' | head -"$piccount" | xargs -n 1 -P 8 wget -q    
+                 # perl -Mojo -E'g("https://www.google.com/search?tbm=isch&q='$ARGV'filetype:'$filetype'&tbs=isz:ex,iszw:1920,iszh:1080,ic:specific,isc:'$colortype'", { "User-Agent" => "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 Chrome/24.0.1312.57" })->dom(".rg_l")->map(sub { m!href="http://www.google.com/imgres\?imgurl=(.*?)&amp;! and $1 } )->join("\n")->say' | head -"$piccount" | xargs -n 1 -P 8 wget -q
             ;;
         "Install Requirements")
             echo ""
@@ -86,23 +89,22 @@ do
             sudo apt-get install libio-socket-ssl-perl -y
             sudo cpan install Mojolicious
             sudo curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
-
             echo ""
             echo " Requirements Installed. "
             ;;
         "Quit")
-                        echo
-                        echo "Github Repo found at https://github.com/tytek2012/givemepics"
+            echo
+            echo "Github Repo found at https://github.com/tytek2012/givemepics"
             break
             ;;
         *) echo invalid option
-                        clear
-                        toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1600
-           echo "Options are" 
-           echo "1) Simple Search"
-           echo "2) Advanced Search" 
-           echo "3) Install Requirements"      
-           echo "4) Quit"
+            clear
+            toilet -f smmono9 -F metal " Give.Me.Pics" | pv -qL 1600
+            echo "Options are" 
+            echo "1) Simple Search"
+            echo "2) Advanced Search" 
+            echo "3) Install Requirements"      
+            echo "4) Quit"
             ;;
     esac
 done
