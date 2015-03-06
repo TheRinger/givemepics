@@ -19,8 +19,7 @@ or
     $ curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
 
 -----------------------
-
-# givemepics
+#How.it.works
 
 make it executable
 
@@ -37,12 +36,23 @@ Run with search arguments like so
 
 gmp hot chicks drinking beer
 
+#Current Features
+
 Allows searching for pictures with of colors you specify.
-Option for File type (jpg, gif, png) or whatever really.
+
+    black blue brown gray green 
+    orange pink purple red teal white yellow
+
+Option for File type
+
+    JPG, PNG, GIF, BMP
+    
+Option for Specific Height and Width.
+
 You pick how many pictures it downloads, currently 1 - 99
-Will be adding options for pic size.. and better interface, eventually.
 
 
+#Credits
 Many Thanks to Yunga
 http://www.reddit.com/r/commandline/comments/2vog7b/bash_script_that_downloads_google_images_based_on/
 
